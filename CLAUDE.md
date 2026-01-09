@@ -19,6 +19,7 @@ This is a client-side web application that converts Trading 212 CSV transaction 
 **Libraries (CDN):**
 - **PapaParse 5.4.1** - CSV parsing
 - **SheetJS 0.18.5** - Excel file generation
+- **Google Analytics 4** - Privacy-focused analytics (anonymous, no cookies)
 
 **Design Pattern:**
 - Event-driven architecture
@@ -285,14 +286,20 @@ Sale Proceeds (SEK) - Acquisition Cost (SEK) = Profit/Loss (SEK)
 - All CSV parsing in browser (PapaParse)
 - All Excel generation in browser (SheetJS)
 - No fetch/XMLHttpRequest to external APIs
-- No analytics or tracking by default
+- Privacy-focused analytics (Google Analytics 4):
+  - IP anonymization enabled
+  - No cookies or client storage
+  - Basic page views only (no user identification)
+  - No file content tracking
 
 **Verification:**
 ```javascript
-// The only network requests should be:
+// Network requests:
 // 1. Loading the HTML/CSS/JS files
 // 2. Loading PapaParse and SheetJS from CDN
-// NO requests should occur after user uploads file
+// 3. Loading Google Analytics (gtag.js) with privacy config
+// 4. Anonymous analytics beacons (no user data, no file data)
+// NO user CSV data is ever transmitted
 ```
 
 ### Data Protection
@@ -304,8 +311,8 @@ Sale Proceeds (SEK) - Acquisition Cost (SEK) = Profit/Loss (SEK)
 
 **How:**
 - `.gitignore` excludes all CSV and Excel files
-- No localStorage or sessionStorage usage
-- No cookies
+- No localStorage or sessionStorage usage for user data
+- Anonymous analytics (no cookies, no user identification)
 
 ---
 
@@ -783,7 +790,7 @@ Types: feat, fix, docs, style, refactor, test, chore
 - ❌ Add server-side processing
 - ❌ Transmit user data anywhere
 - ❌ Store data in localStorage (privacy concern)
-- ❌ Add tracking without user consent
+- ❌ Add tracking that identifies users or captures file data
 - ❌ Change tax calculation logic without verification
 - ❌ Remove error handling
 

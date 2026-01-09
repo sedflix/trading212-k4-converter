@@ -46,6 +46,22 @@
     }
     </script>
 
+    <!-- Google Analytics 4 - Privacy-focused (No cookies, IP anonymization) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JJYBQ1RP16"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        // Privacy-focused configuration
+        gtag('config', 'G-JJYBQ1RP16', {
+            'anonymize_ip': true,           // Anonymize IP addresses
+            'storage': 'none',              // Disable cookies
+            'client_storage': 'none',       // Disable all client storage
+            'send_page_view': true          // Track basic page views only
+        });
+    </script>
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
